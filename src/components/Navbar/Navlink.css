@@ -1,0 +1,6 @@
+.Navlink {
+    display: flex;
+    justify-content: space-around;
+    width: 800px;
+    text-decoration: none;
+}
