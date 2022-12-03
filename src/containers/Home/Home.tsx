@@ -1,33 +1,39 @@
 import { Grid } from '@mui/material';
 import React, {useCallback, useEffect, useState} from 'react';
 import AllPosts from "../../components/AllPosts/AllPosts";
-import {Outlet} from "react-router-dom";
+import {Outlet, useLocation} from "react-router-dom";
 import {Post, PostList} from "../../types";
 import axiosApi from "../../axiosApi";
 import Spinner from "../../components/Spinner/Spinner";
 
 const Home = () => {
-    const [posts, setPosts] = useState<Post[]>([]);
+    const [posts, setPosts] = useState<Post[] >([]);
     const [loading, setLoading] = useState(false);
+    const location = useLocation();
 
     const fetchPosts = useCallback(async () => {
         try{
             setLoading(true);
             const postResponse = await axiosApi.get<PostList>('/posts.json');
-            const posts = Object.keys(postResponse.data).map(key => {
-                const post = postResponse.data[key]
-                post.id = key;
-                return post;
-            })
-            setPosts(posts)
+            if(postResponse.data){
+                const posts = Object.keys(postResponse.data).map(key => {
+                    const post = postResponse.data[key]
+                    post.id = key;
+                    return post;
+                })
+                setPosts(posts);
+            }
+
         }finally {
             setLoading(false);
         }
-    }, []);
+
+    }, [posts.length]);
 
     useEffect( () => {
-        fetchPosts().catch(console.error);
-    }, [posts.length]);
+        void fetchPosts();
+    }, [fetchPosts, location]);
+
 
     return (
         <div className='d-flex m-5 '  >

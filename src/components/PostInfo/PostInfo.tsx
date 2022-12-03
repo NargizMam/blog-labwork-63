@@ -11,9 +11,9 @@ import Button from "@mui/material/Button";
 
 
 const Post = () => {
+    const {id} = useParams();
     const [postInfo, setPostInfo] = useState<PostInfo | null>(null);
     const [loading, setLoading] = useState(false);
-    const {id} = useParams();
     const navigate = useNavigate();
 
     const fetchPosts = useCallback(async () => {
