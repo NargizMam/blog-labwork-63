@@ -5,6 +5,7 @@ import Home from "./containers/Home/Home";
 import About from "./containers/About/About";
 import Contacts from "./containers/Contacts/Contacts";
 import PostForm from "./containers/PostForm/PostForm";
+import PostInfo from "./components/PostInfo/PostInfo";
 
 
 function App() {
@@ -17,7 +18,14 @@ function App() {
                 <Routes>
                     <Route path='/' element={(
                         <Home/>
-                    )}/>
+                    )}>
+                        <Route path='posts/:id' element={(
+                            <PostInfo/>
+                        )}/>
+                        <Route path='/edit/:id' element={(
+                            <PostForm/>
+                        )}/>
+                    </Route>
                     <Route path='/new-post' element={(
                         <PostForm/>
                     )}/>

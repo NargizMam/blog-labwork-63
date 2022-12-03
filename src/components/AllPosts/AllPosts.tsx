@@ -1,13 +1,23 @@
 import React from 'react';
-import OnePost from "../OnePost/OnePost";
+import {Post} from "../../types";
+import OnePost from "./OnePost/OnePost";
 
-const AllPosts = () => {
-    return (
+interface  Props {
+    posts: Post[];
+}
+const AllPosts: React.FC<Props> = ({posts}) => {
+
+    const onePost = posts.map(post => (
+        <OnePost post={post}
+                 key={post.id}
+        />
+        ))
+
+
+    return posts &&(
         <>
            <p>All posts</p>
-            <OnePost/>
-            <OnePost/>
-            <OnePost/>
+            {onePost}
         </>
     );
 };

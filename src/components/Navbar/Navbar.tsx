@@ -3,14 +3,13 @@ import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import {Button, Grid} from "@mui/material";
 import {NavLink} from "react-router-dom";
-import './Navlink.css';
 
 const Navbar = () => {
     return (
         <Box sx={{ flexGrow: 1 }}>
             <AppBar position="static">
-                    <div className="Navlink">
-                        <NavLink to="/">
+                    <div className="navbar bg-light px-5">
+                        <NavLink to="/" className='navbar-brand'>
                             My BLOG
                         </NavLink>
                         <Grid>
@@ -23,7 +22,7 @@ const Navbar = () => {
                             <Button variant="outlined">
                                 <NavLink to="about">About</NavLink>
                             </Button>
-                            <Button variant="outlined">
+                            <Button variant="outlined" >
                                 <NavLink to="contacts">Contacts</NavLink>
                             </Button>
                         </Grid>
