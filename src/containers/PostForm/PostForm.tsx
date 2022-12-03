@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import {NewPost} from "../../types";
-import {useLocation, useNavigate, useParams} from "react-router-dom";
+import {useNavigate, useParams} from "react-router-dom";
 import axiosApi from "../../axiosApi";
 import Spinner from "../../components/Spinner/Spinner";
 
