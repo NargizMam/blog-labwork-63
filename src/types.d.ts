@@ -17,3 +17,6 @@ export interface NewPost {
     date: string;
     message: string
 }
+export interface Contacts {
+    text: string;
+}
